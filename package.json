@@ -12,9 +12,9 @@
   "author": "sedouard",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Azure/azure-quickstart-templates/issues"
+    "url": "https://github.com/akhil-thomas011/sampletemplate/issues"
   },
-  "homepage": "https://github.com/Azure/azure-quickstart-templates#readme",
+  "homepage": "https://github.com/akhil-thomas011/sampletemplate#readme",
   "devDependencies": {
     "debug": "^2.2.0",
     "grunt": "^0.4.5",
