@@ -165,7 +165,7 @@ function prepTemplate(templatePath, parametersPath) {
 function validateTemplate(templatePath, parametersPath) {
   var requestBody = prepTemplate(templatePath, parametersPath);
   console.log('In validateTemplate');
-  console.log(process.env.VALIDATION_HOST);
+  console.log(process.env.TRAVIS_PULL_REQUEST);
 
   if (process.env.TRAVIS_PULL_REQUEST &&
     process.env.TRAVIS_PULL_REQUEST !== 'false') {
