@@ -89,8 +89,7 @@ function getEnvironmentVariableBoolean(variableName, defaultValue) {
 function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
   if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
-    validatePromise = RSVP.resolve({});
-    
+    validatePromise = RSVP.resolve({});    
   } else {
     // Calls a remote url which will validate the template and parameters
     if (process.env.TRAVIS_PULL_REQUEST &&
@@ -98,9 +97,7 @@ function validateTemplate(requestBody, templateFilePath) {
       requestBody.pull_request = process.env.TRAVIS_PULL_REQUEST;
       console.log(requestBody.pull_request);
     }
-
     var templateObject = requestBody.template;
-
     // validate the template paramters, particularly the description field
     assert(templateObject.parameters, 'Expected a \'.parameters\' field within the deployment template');
     for (var parameterName in templateObject.parameters) {
