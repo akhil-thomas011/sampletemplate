@@ -165,7 +165,6 @@ function prepTemplate(templatePath, parametersPath) {
 function validateTemplate(templatePath, parametersPath) {
   var requestBody = prepTemplate(templatePath, parametersPath);
   console.log('In validateTemplate');
-  console.log(process.env.VALIDATION_HOST);
 
   if (process.env.TRAVIS_PULL_REQUEST &&
     process.env.TRAVIS_PULL_REQUEST !== 'false') {
@@ -204,6 +203,7 @@ function timedOutput(onOff, intervalObject) {
 // Calls a remote url which will deploy the template
 function deployTemplate(templatePath, parametersPath) {
   var requestBody = prepTemplate(templatePath, parametersPath);
+  console.log('In deployTemplate');
 
   if (process.env.TRAVIS_PULL_REQUEST &&
     process.env.TRAVIS_PULL_REQUEST !== 'false') {
