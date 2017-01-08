@@ -315,6 +315,8 @@ describe('Template', function () {
                 template: readJSONFile(templateFilePath),
                 parameters: readJSONFile(parametersFilePath)
               };
+              console.log(requestBody.template);
+              console.log(requestBody.parameters);
 
               return validateTemplate(requestBody, templateFilePath)
                 .then(function () {
