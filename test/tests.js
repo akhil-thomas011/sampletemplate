@@ -127,7 +127,6 @@ function validateTemplate(requestBody, templateFilePath) {
     });
   }
   return validatePromise;
-  console.log(validatePromise);
 }
 
 function deployTemplate(requestBody) {
