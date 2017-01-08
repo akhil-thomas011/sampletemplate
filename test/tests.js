@@ -90,7 +90,7 @@ function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
   if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
     validatePromise = RSVP.resolve({});
-    console.log(validatePromise);
+    
   } else {
     // Calls a remote url which will validate the template and parameters
     if (process.env.TRAVIS_PULL_REQUEST &&
@@ -111,7 +111,8 @@ function validateTemplate(requestBody, templateFilePath) {
           templateFilePath + ' - Parameter \"' + parameterName + '\" is missing its \"description\" field within the metadata property');
       }
     }
-    console.log(process.env.VALIDATION_HOST);
+    var host1 = process.env.VALIDATION_HOST;
+    console.log(host1);
     validatePromise = new RSVP.Promise(function (resolve, reject) {
       unirest.post(process.env.VALIDATION_HOST + '/validate')
         .type('json')
@@ -126,6 +127,7 @@ function validateTemplate(requestBody, templateFilePath) {
     });
   }
   return validatePromise;
+  console.log(validatePromise);
 }
 
 function deployTemplate(requestBody) {
