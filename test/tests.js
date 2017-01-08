@@ -111,7 +111,7 @@ function validateTemplate(requestBody, templateFilePath) {
           templateFilePath + ' - Parameter \"' + parameterName + '\" is missing its \"description\" field within the metadata property');
       }
     }
-console.log(process.env.VALIDATION_HOST);
+    console.log(process.env.VALIDATION_HOST);
     validatePromise = new RSVP.Promise(function (resolve, reject) {
       unirest.post(process.env.VALIDATION_HOST + '/validate')
         .type('json')
