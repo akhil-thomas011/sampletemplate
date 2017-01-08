@@ -146,7 +146,7 @@ function deployTemplate(requestBody) {
       return unirest.post(process.env.VALIDATION_HOST + '/deploy')
         .type('json')
         .timeout(3600 * 1000) // Templates can take a long time to deploy, so set the timeout to 1 hour
-        .send(JSON.stringify(requestBody));
+        .send(JSON.stringify(requestBody))
         .end(function (response) {
           timedOutput(false, intervalObj);
           debug(response.status);
