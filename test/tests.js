@@ -309,7 +309,8 @@ describe('Template', function () {
             it(testDirectory, function () {
               var templateFilePath = path.join(testDirectory, 'azuredeploy.json');
               var parametersFilePath = path.join(testDirectory, 'azuredeploy.parameters.json');
-
+              console.log(templateFilePath);
+              console.log(parametersFilePath);
               var requestBody = {
                 template: readJSONFile(templateFilePath),
                 parameters: readJSONFile(parametersFilePath)
