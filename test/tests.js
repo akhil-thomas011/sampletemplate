@@ -90,11 +90,13 @@ function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
   if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
     validatePromise = RSVP.resolve({});
+    console.log(validatePromise);
   } else {
     // Calls a remote url which will validate the template and parameters
     if (process.env.TRAVIS_PULL_REQUEST &&
       process.env.TRAVIS_PULL_REQUEST !== 'false') {
       requestBody.pull_request = process.env.TRAVIS_PULL_REQUEST;
+      console.log(requestBody.pull_request);
     }
 
     var templateObject = requestBody.template;
@@ -109,7 +111,7 @@ function validateTemplate(requestBody, templateFilePath) {
           templateFilePath + ' - Parameter \"' + parameterName + '\" is missing its \"description\" field within the metadata property');
       }
     }
-
+console.log(process.env.VALIDATION_HOST);
     validatePromise = new RSVP.Promise(function (resolve, reject) {
       unirest.post(process.env.VALIDATION_HOST + '/validate')
         .type('json')
@@ -144,7 +146,7 @@ function deployTemplate(requestBody) {
       return unirest.post(process.env.VALIDATION_HOST + '/deploy')
         .type('json')
         .timeout(3600 * 1000) // Templates can take a long time to deploy, so set the timeout to 1 hour
-        .send(JSON.stringify(requestBody))
+        .send(JSON.stringify(requestBody)
         .end(function (response) {
           timedOutput(false, intervalObj);
           debug(response.status);
