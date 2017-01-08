@@ -52,6 +52,7 @@ function validateMetadata(metadataPath) {
     encoding: 'utf-8'
   });
   metadataData = metadataData.trim();
+  console.log('In validate metadata');
 
   var metadata = tryParse(metadataPath, metadataData);
 
@@ -125,6 +126,7 @@ function validateParamtersFile(parametersPath) {
     encoding: 'utf-8'
   });
   var metadataData = parametersData.trim();
+   console.log('In validate Template File');
 
   var parametersObject = tryParse(parametersPath, metadataData);
 
@@ -149,6 +151,7 @@ function prepTemplate(templatePath, parametersPath) {
 
   templateData = templateData.trim();
   parameterData = parameterData.trim();
+  console.log('In Prep Template');
 
   var requestBody = {
     template: tryParse(templatePath, templateData),
@@ -161,6 +164,8 @@ function prepTemplate(templatePath, parametersPath) {
 // Calls a remote url which will validate the template and parameters
 function validateTemplate(templatePath, parametersPath) {
   var requestBody = prepTemplate(templatePath, parametersPath);
+   console.log('In validateTemplate');
+   console.log(process.env.VALIDATION_HOST);
 
   if (process.env.TRAVIS_PULL_REQUEST &&
     process.env.TRAVIS_PULL_REQUEST !== 'false') {
