@@ -3,5 +3,5 @@
   "description": "This template deploys a Barracuda Web Application firewall solution with IIS based backend web servers ",
   "summary": "This Azure Quick Start template deploys a Barracuda Web Application Firewall Solution on Azure.",
   "githubUsername": "akhil-thomas011",
-  "dateUpdated": "2017-08-01"
+  "dateUpdated": "2017-01-07"
 }
