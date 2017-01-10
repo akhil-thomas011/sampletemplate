@@ -180,10 +180,10 @@ function validateTemplate(templatePath, parametersPath) {
       .send(JSON.stringify(requestBody))
       .end(function (response) {
         if (response.status !== 200) {
-            reject(response);
-          } else {
-            resolve(response.body);
-          }
+          return reject(response);
+        }
+
+        return resolve(response.body);
       });
   });
 }
@@ -215,7 +215,6 @@ function deployTemplate(templatePath, parametersPath) {
 
   var intervalObj = timedOutput(true);
   debug('making deploy request');
-  console.log('making deploy request');
 
   return new RSVP.Promise(function (resolve, reject) {
     unirest.post(process.env.VALIDATION_HOST + '/deploy')
@@ -234,7 +233,6 @@ function deployTemplate(templatePath, parametersPath) {
         }
 
         if (response.body.result === 'Deployment Successful') {
-          console.log('Custom log: Deployment Successful... Exiting from deployTemplate');
           return resolve(response.body);
         } else {
           return reject(response.body);
