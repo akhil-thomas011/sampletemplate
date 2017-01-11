@@ -88,6 +88,7 @@ function getEnvironmentVariableBoolean(variableName, defaultValue) {
 
 function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
+  console.log('Custom log: Entered validateTemplate function');
   if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
     validatePromise = RSVP.resolve({});
   } else {
@@ -118,6 +119,7 @@ function validateTemplate(requestBody, templateFilePath) {
           if (response.status !== 200) {
             reject(response);
           } else {
+            console.log('Custom log: Exiting validateTemplate function');
             resolve(response.body);
           }
         });
@@ -128,6 +130,7 @@ function validateTemplate(requestBody, templateFilePath) {
 
 function deployTemplate(requestBody) {
   var deployPromise;
+  console.log('Custom log: Entered deployTemplate function');
   if (getEnvironmentVariableBoolean('VALIDATION_SKIP_DEPLOY')) {
     deployPromise = RSVP.resolve({});
   } else {
@@ -157,8 +160,10 @@ function deployTemplate(requestBody) {
           }
 
           if (response.body.result === 'Deployment Successful') {
+            console.log('Custom log: Exiting deployTemplate function. Deployment Success');
             resolve(response.body);
           } else {
+            console.log('Custom log: Exiting deployTemplate function. Deployment Failed');
             reject(response.body);
           }
         });
