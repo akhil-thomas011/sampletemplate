@@ -185,8 +185,8 @@ describe('Template', function () {
   this.timeout(7100 * 1000);
 
   var validateModifiedOnly = getEnvironmentVariableBoolean('VALIDATE_MODIFIED_ONLY', false);
-  var runRemoteValidation = !getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE');
-  var runRemoteDeployment = !getEnvironmentVariableBoolean('VALIDATION_SKIP_DEPLOY');
+  var runRemoteValidation = 'true';
+  var runRemoteDeployment = 'true';
 
   var modifiedDirectories = {};
   if (validateModifiedOnly) {
