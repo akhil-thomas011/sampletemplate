@@ -88,7 +88,7 @@ function getEnvironmentVariableBoolean(variableName, defaultValue) {
 
 function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
-  if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
+  if (process.env.VALIDATION_SKIP_VALIDATE) {
     validatePromise = RSVP.resolve({});
   } else {
     // Calls a remote url which will validate the template and parameters
@@ -128,7 +128,7 @@ function validateTemplate(requestBody, templateFilePath) {
 
 function deployTemplate(requestBody) {
   var deployPromise;
-  if (getEnvironmentVariableBoolean('VALIDATION_SKIP_DEPLOY')) {
+  if (process.env.VALIDATION_SKIP_DEPLOY) {
     deployPromise = RSVP.resolve({});
   } else {
     if (process.env.TRAVIS_PULL_REQUEST &&
