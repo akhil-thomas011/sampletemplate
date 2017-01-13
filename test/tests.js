@@ -131,7 +131,7 @@ function validateTemplate(requestBody, templateFilePath) {
 function deployTemplate(requestBody) {
   var deployPromise;
   console.log('Custom log: Entered deployTemplate function');
-  if (getEnvironmentVariableBoolean('VALIDATION_SKIP_DEPLOY')) {
+  if (process.env.VALIDATION_SKIP_DEPLOY) {
     deployPromise = RSVP.resolve({});
   } else {
     if (process.env.TRAVIS_PULL_REQUEST &&
@@ -185,9 +185,9 @@ function itExists(filePath) {
 describe('Template', function () {
   this.timeout(7100 * 1000);
 
-  var validateModifiedOnly = getEnvironmentVariableBoolean('VALIDATE_MODIFIED_ONLY', false);
-  var runRemoteValidation = !getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE');
-  var runRemoteDeployment = !getEnvironmentVariableBoolean('VALIDATION_SKIP_DEPLOY');
+  var validateModifiedOnly = process.env.VALIDATE_MODIFIED_ONLY;
+  var runRemoteValidation = !(process.env.VALIDATION_SKIP_VALIDATE);
+  var runRemoteDeployment = !(process.env.VALIDATION_SKIP_DEPLOY);
 
   var modifiedDirectories = {};
   if (validateModifiedOnly) {
