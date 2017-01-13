@@ -95,6 +95,7 @@ function validateTemplate(requestBody, templateFilePath) {
     if (process.env.TRAVIS_PULL_REQUEST &&
       process.env.TRAVIS_PULL_REQUEST !== 'false') {
       requestBody.pull_request = process.env.TRAVIS_PULL_REQUEST;
+      console.log(requestBody);
     }
 
     var templateObject = requestBody.template;
