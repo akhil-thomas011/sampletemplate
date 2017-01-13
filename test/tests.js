@@ -71,21 +71,6 @@ function timedOutput(onOff, intervalObject) {
   }
 }
 
-function getEnvironmentVariableBoolean(variableName, defaultValue) {
-  var result = defaultValue;
-
-  if (variableName) {
-    var variableValue = process.env[variableName];
-    if (variableValue) {
-      if (typeof variableValue === 'string') {
-        result = (variableValue.toLowerCase() === 'true');
-      }
-    }
-  }
-
-  return result;
-}
-
 function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
   console.log('Custom log: Entered validateTemplate function');
