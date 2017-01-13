@@ -89,7 +89,7 @@ function getEnvironmentVariableBoolean(variableName, defaultValue) {
 function validateTemplate(requestBody, templateFilePath) {
   var validatePromise;
   console.log('Custom log: Entered validateTemplate function');
-  if (getEnvironmentVariableBoolean('VALIDATION_SKIP_VALIDATE')) {
+  if (process.env.VALIDATION_SKIP_VALIDATE) {
     validatePromise = RSVP.resolve({});
   } else {
     // Calls a remote url which will validate the template and parameters
