@@ -120,6 +120,7 @@ function validateTemplate(requestBody, templateFilePath) {
             reject(response);
           } else {
             resolve(response.body);
+            console.log('Validation OK');
           }
         });
     });
@@ -134,6 +135,7 @@ function deployTemplate(requestBody) {
   } else {
     if (process.env.TRAVIS_PULL_REQUEST &&
       process.env.TRAVIS_PULL_REQUEST !== 'false') {
+      console.log('Entered deployment');
       requestBody.pull_request = process.env.TRAVIS_PULL_REQUEST;
     }
 
@@ -158,6 +160,7 @@ function deployTemplate(requestBody) {
           }
 
           if (response.body.result === 'Deployment Successful') {
+            console.log('Deployment OK');
             resolve(response.body);
           } else {
             reject(response.body);
